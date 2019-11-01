@@ -1,14 +1,21 @@
 {
   "name": "shape",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Creating ESRI shapefiles",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "rodkwithnasa",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/rodkwithnasa/shape2.git"
+  },
   "dependencies": {
     "shp-write": "git+https://github.com/jeff-tenhave/shp-write.git"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
   }
 }

@@ -60,3 +60,5 @@ fs.writeFile('output/file.zip', myfile, (err) => {
   if (err) throw err
  
 })
+
+module.exports.mypoint = mypoint
