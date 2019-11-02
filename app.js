@@ -21,6 +21,8 @@ var mypoint = {
         ]
     ]
 }
+module.exports.mypoint = mypoint
+
 var mypoint2 = {
     "type": "Point",
     "coordinates": [-1.2952, 51.420643 ]
@@ -61,4 +63,3 @@ fs.writeFile('output/file.zip', myfile, (err) => {
  
 })
 
-module.exports.mypoint = mypoint
