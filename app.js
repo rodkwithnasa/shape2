@@ -57,9 +57,8 @@ debugger
 const myfile = shpwrite.zip( myfc, options)
 
 const fs = require('fs')
+const path = require('path')
+const outfile = 'output/file.zip'
 
-fs.writeFile('output/file.zip', myfile, (err) => {
-  if (err) throw err
- 
-})
-
+fs.promises.mkdir(path.dirname(outfile), {recursive: true}).then(
+    () => fs.promises.writeFile(outfile, myfile))
