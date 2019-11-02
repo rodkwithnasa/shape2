@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "files":["app.js"],
   "author": "rodkwithnasa",
+  "keywords": ["shapefile"],
   "license": "MIT",
   "repository": {
     "type" : "git",
