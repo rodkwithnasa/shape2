@@ -1,5 +1,12 @@
 var assert = require('assert');
-var mypoint = require('../app').mypoint
+var app = require('../app')
+
+var chai = require('chai')
+var reqpath = require('path')
+var should = require('chai').should() //actually call the function
+
+
+chai.use(require('chai-fs'))
 
 var mytestpoint = {
     "type": "Polygon",
@@ -17,7 +24,18 @@ var mytestpoint = {
 describe('shape2', function() {
     describe('#mypoint', function() {
         it('should be equal to this template', function() {
-            assert.deepStrictEqual(mypoint, mytestpoint)
+            assert.deepStrictEqual(app.mypoint, mytestpoint)
+        })
+    })
+    describe('#outputfile', function() {
+        it('should create a 3d shapefile', function() {
+            app.exmapcoords()
+            app.exoutputfile()
+
+            var mydir = reqpath.dirname(app.outfile)
+            var myfile = reqpath.basename(app.outfile)
+            mydir.should.be.a.directory('Dir exists').and.include.contents([myfile], 'file exists');
+
         })
     })
 })

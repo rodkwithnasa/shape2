@@ -5,20 +5,26 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha",
-    "start" : "node app.js"
+    "start": "node app.js"
   },
-  "files":["app.js"],
+  "files": [
+    "app.js"
+  ],
   "author": "rodkwithnasa",
-  "keywords": ["shapefile"],
+  "keywords": [
+    "shapefile"
+  ],
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/rodkwithnasa/shape2.git"
+    "type": "git",
+    "url": "https://github.com/rodkwithnasa/shape2.git"
   },
   "dependencies": {
     "shp-write": "git+https://github.com/jeff-tenhave/shp-write.git"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-fs": "^2.0.0",
     "mocha": "^6.2.2"
   }
 }

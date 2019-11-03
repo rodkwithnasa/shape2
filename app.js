@@ -22,8 +22,8 @@ var mypoint = {
     ]
 }
 module.exports.mypoint = mypoint
-module.exports.mapcoords = mapcoords
-module.exports.outputfile = outputfile
+
+var outfile = "output/file.zip"
 module.exports.outfile = outfile
 
 var mypoint2 = {
@@ -49,28 +49,27 @@ var myfc = {
         }
     ]
 }
-
-var outfile = 'output/file.zip'
+ 
 
 debugger
 
-var mapcoords = function mapcoords() {
+module.exports.exmapcoords = function mapcoords() {
     //mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : cell * (1/60) )))
     mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : index % 2 ? cell + mypoint2.coordinates[1] : cell + mypoint2.coordinates[0] )))
 }
 
-mapcoords()
+module.exports.exmapcoords()
 
 debugger
 
-var outputfile = function outputfile(){
+module.exports.exoutputfile = function outputfile(){
     const myfile = shpwrite.zip( myfc, options)
 
     const fs = require('fs')
     const path = require('path')
 
-    fs.promises.mkdir(path.dirname(outfile), {recursive: true}).then(
-        () => fs.promises.writeFile(outfile, myfile))
+    fs.promises.mkdir(path.dirname(module.exports.outfile), {recursive: true}).then(
+        () => fs.promises.writeFile(module.exports.outfile, myfile))
 }
 
-outputfile()
+module.exports.exoutputfile()
