@@ -22,6 +22,9 @@ var mypoint = {
     ]
 }
 module.exports.mypoint = mypoint
+module.exports.mapcoords = mapcoords
+module.exports.outputfile = outputfile
+module.exports.outfile = outfile
 
 var mypoint2 = {
     "type": "Point",
@@ -47,18 +50,27 @@ var myfc = {
     ]
 }
 
-debugger
-
-//mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : cell * (1/60) )))
-mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : index % 2 ? cell + mypoint2.coordinates[1] : cell + mypoint2.coordinates[0] )))
+var outfile = 'output/file.zip'
 
 debugger
 
-const myfile = shpwrite.zip( myfc, options)
+var mapcoords = function mapcoords() {
+    //mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : cell * (1/60) )))
+    mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : index % 2 ? cell + mypoint2.coordinates[1] : cell + mypoint2.coordinates[0] )))
+}
 
-const fs = require('fs')
-const path = require('path')
-const outfile = 'output/file.zip'
+mapcoords()
 
-fs.promises.mkdir(path.dirname(outfile), {recursive: true}).then(
-    () => fs.promises.writeFile(outfile, myfile))
+debugger
+
+var outputfile = function outputfile(){
+    const myfile = shpwrite.zip( myfc, options)
+
+    const fs = require('fs')
+    const path = require('path')
+
+    fs.promises.mkdir(path.dirname(outfile), {recursive: true}).then(
+        () => fs.promises.writeFile(outfile, myfile))
+}
+
+outputfile()
