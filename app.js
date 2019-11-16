@@ -9,7 +9,7 @@ const options = {
     }
 }
 
-var mypoint = {
+exports.mypoint = {
     "type": "Polygon",
     "coordinates": [
         [
@@ -21,10 +21,8 @@ var mypoint = {
         ]
     ]
 }
-module.exports.mypoint = mypoint
 
-var outfile = "output/file.zip"
-module.exports.outfile = outfile
+exports.outfile = "output/file.zip"
 
 var mypoint2 = {
     "type": "Point",
@@ -35,7 +33,7 @@ var myfc = {
     features: [
         {
             type: 'Feature',
-            geometry: mypoint,
+            geometry: exports.mypoint,
             properties: {
                 name: 'tower89'
             }
@@ -53,23 +51,23 @@ var myfc = {
 
 debugger
 
-module.exports.exmapcoords = function mapcoords() {
+exports.exmapcoords = function () {
     //mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : cell * (1/60) )))
-    mypoint.coordinates = mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : index % 2 ? cell + mypoint2.coordinates[1] : cell + mypoint2.coordinates[0] )))
+    exports.mypoint.coordinates = exports.mypoint.coordinates.map(col => col.map(row => row.map( (cell,index) => index == 2 ? cell : index % 2 ? cell + mypoint2.coordinates[1] : cell + mypoint2.coordinates[0] )))
 }
 
-module.exports.exmapcoords()
+exports.exmapcoords()
 
 debugger
 
-module.exports.exoutputfile = function outputfile(){
+exports.exoutputfile = function (){
     const myfile = shpwrite.zip( myfc, options)
 
     const fs = require('fs')
     const path = require('path')
 
-    fs.promises.mkdir(path.dirname(module.exports.outfile), {recursive: true}).then(
-        () => fs.promises.writeFile(module.exports.outfile, myfile))
+    fs.promises.mkdir(path.dirname(exports.outfile), {recursive: true}).then(
+        () => fs.promises.writeFile(exports.outfile, myfile))
 }
 
-module.exports.exoutputfile()
+exports.exoutputfile()
