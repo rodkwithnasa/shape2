@@ -25,6 +25,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-fs": "^2.0.0",
-    "mocha": "^6.2.2"
+    "mocha": "^11.7.5"
   }
 }
