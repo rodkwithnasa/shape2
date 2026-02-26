@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rodkwithnasa/shape2.git"
+    "url": "git+https://github.com/rodkwithnasa/shape2.git"
   },
   "dependencies": {
     "shp-write": "git+https://github.com/jeff-tenhave/shp-write.git"
